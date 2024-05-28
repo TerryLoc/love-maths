@@ -11,12 +11,11 @@ document.addEventListener('DOMContentLoaded', function () {
     button.addEventListener('click', function () {
       // Check if the button has a data-type attribute set to "submit"
       if (this.getAttribute('data-type') === 'submit') {
-        // If it is, show an alert message saying "You clicked Submit!"
-        alert('You clicked Submit!');
+        checkAnswer();
       } else {
         // If it's not, get the value of the data-type attribute and store it in a variable
         let gameType = this.getAttribute('data-type');
-        // Show an alert message with the value of the gameType variable
+
         runGame(gameType);
       }
     });
@@ -38,7 +37,24 @@ function runGame(gameType) {
   }
 }
 
-function checkAnswer() {}
+/** This os to check the answer giving by the user in the DOM */
+function checkAnswer() {
+  let userAns = parseInt(document.getElementById('answer-box').value);
+
+  let calAns = calCorrectAns();
+  let isCorrect = userAns === calAns[0];
+
+  if (isCorrect) {
+    alert('Hey you got it right! 😃');
+  } else {
+    alert(
+      `Awww... you answered ${userAns}. The correct answer was ${
+        calCorrectAns()[0]
+      }!`
+    );
+  }
+  runGame(calCorrectAns()[1]);
+}
 
 /** Get the operands (The numbers) and the operator (+, -, etc.) * directly from the DOM, and returns the correct answer  */
 function calCorrectAns() {
