@@ -255,8 +255,15 @@ main {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) {
+  .controls-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px auto;
+  }
 }
+
 /* @media (max-width: 414px) {
   .controls-area {
     width: 100%;
