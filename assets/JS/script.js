@@ -17,26 +17,26 @@ document.addEventListener('DOMContentLoaded', function () {
         // If it's not, get the value of the data-type attribute and store it in a variable
         let gameType = this.getAttribute('data-type');
         // Show an alert message with the value of the gameType variable
-        alert(`You clicked ${gameType}`);
+        runGame(gameType);
       }
     });
   }
+
+  runGame('addition');
 });
 
 /** The main game 'loop', called when the script is first loaded * and after the user's answer has been processed */
-function runGame() {
+function runGame(gameType) {
   let num1 = Math.floor(Math.random() * 25) + 1;
   let num2 = Math.floor(Math.random() * 25) + 1;
 
-  const operand1 = document.getElementById('operand1');
-  const operand2 = document.getElementById('operand2');
-  const operator = document.getElementById('operator');
-
-  operand1.innerText = num1;
-  operand2.innerText = num2;
+  if (gameType === 'addition') {
+    displayAdditionQuestion(num1, num2);
+  } else {
+    alert(`Unknown game type: ${gameType}`);
+    throw `Unknown game type: ${gameType}. Aborting`;
+  }
 }
-
-runGame();
 
 function checkAnswer() {}
 
@@ -46,7 +46,11 @@ function incrementScore() {}
 
 function incrementWrongAns() {}
 
-function displayAdditionQuestion() {}
+function displayAdditionQuestion(operand1, operand2) {
+  document.getElementById('operand1').textContent = operand1;
+  document.getElementById('operand2').textContent = operand2;
+  document.getElementById('operator').textContent = '+';
+}
 
 function displaySubtractQuestion() {}
 
