@@ -69,6 +69,8 @@ main {
 }
 
 .controls-area {
+  /* display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); */
   width: 85%;
   margin: 30px auto;
 }
