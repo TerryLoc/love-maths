@@ -13,6 +13,7 @@ body {
   background-color: white;
   color: #445361;
   text-align: center;
+  /* all: unset; */
 }
 
 main {
